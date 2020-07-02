@@ -21,7 +21,7 @@ def parse_version(version_file):
     del file_list[-1]
     return [name + ".swf" for name in file_list]
 
-def parse_arg(args):
+def parse_args(args):
     default_lang = {"fr", "de", "en", "it", "es", "pt", "nl"}
     if len(args) > 1 :
         del args[0]
@@ -37,19 +37,17 @@ base_url    = "http://dofusretro.cdn.ankama.com/lang/"
 base_dir    = "lang/"
 
 if __name__ == "__main__":
-    lang_list = parse_arg(sys.argv)
+    lang_list = parse_args(sys.argv)
     print("Getting lang from this : {}".format(lang_list))
 
-    if not os.path.exists(base_dir):
-        os.makedirs(base_dir)
     if not os.path.exists(base_dir + "swf/"):
         os.makedirs(base_dir + "swf/")
     
     versions_uri = base_url + "versions.swf"
     versions_dir = base_dir + "versions.swf"
+
     print("Getting file [{}]".format(versions_uri))
     content = get_content_from_uri(versions_uri, False)
-    
     print("Writing in file [{}]".format(versions_dir))
     write_content_to_file(versions_dir, content, True)
     
@@ -57,9 +55,9 @@ if __name__ == "__main__":
         version_name = "versions_" + lang + ".txt"
         url_version  = base_url + version_name
         dir_version  = base_dir + version_name
+
         print("Getting file [{}]".format(url_version))
         content = get_content_from_uri(url_version, True)
-        
         print("Writing in file [{}]".format(dir_version))
         write_content_to_file(dir_version, content, False)
         
@@ -68,6 +66,7 @@ if __name__ == "__main__":
         for file in file_list:
             url_file = base_url + "swf/" + file
             dir_file = base_dir + "swf/" + file
+
             print("Getting file [{}]".format(url_file))
             content = get_content_from_uri(url_file, False)
             print("Writing in file [{}]".format(dir_file))
