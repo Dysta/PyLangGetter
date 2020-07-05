@@ -46,9 +46,9 @@ if __name__ == "__main__":
     versions_uri = base_url + "versions.swf"
     versions_dir = base_dir + "versions.swf"
 
-    print(f"Getting file : versions.swf ({versions_uri})") 
     content = get_content_from_uri(versions_uri, False)
     write_content_to_file(versions_dir, content, True)
+    
     countLang = 1
     countFile = 1
     
