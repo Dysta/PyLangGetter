@@ -19,7 +19,7 @@ def parse_version(version_file):
         content = file.read()
     file_list = content.replace("&f=", "").replace(",", "_").split("|")
     del file_list[-1]
-    return [name + ".swf" for name in file_list]
+    return [f"{name}.swf" for name in file_list]
 
 def parse_args(args):
     default_lang = {"fr", "de", "en", "it", "es", "pt", "nl"}
@@ -33,29 +33,29 @@ def parse_args(args):
     else:
         return default_lang
 
-base_url    = "http://dofusretro.cdn.ankama.com/lang/"
-base_dir    = "lang/"
+BASE_URL    = "http://dofusretro.cdn.ankama.com/lang/"
+BASE_DIR    = "lang/"
 
 if __name__ == "__main__":
     lang_list = parse_args(sys.argv)
     print(f"Getting lang from this : {lang_list}")
 
-    if not os.path.exists(base_dir + "swf/"):
-        os.makedirs(base_dir + "swf/")
+    if not os.path.exists(BASE_DIR + "swf/"):
+        os.makedirs(BASE_DIR + "swf/")
     
-    versions_uri = base_url + "versions.swf"
-    versions_dir = base_dir + "versions.swf"
+    versions_uri = BASE_URL + "versions.swf"
+    versions_dir = BASE_DIR + "versions.swf"
 
     content = get_content_from_uri(versions_uri, False)
     write_content_to_file(versions_dir, content, True)
     
-    countLang = 1
-    countFile = 1
+    countLang:int = 1
+    countFile:int = 1
     
     for lang in lang_list:
         version_name = "versions_" + lang + ".txt"
-        url_version  = base_url + version_name
-        dir_version  = base_dir + version_name
+        url_version  = BASE_URL + version_name
+        dir_version  = BASE_DIR + version_name
 
         content = get_content_from_uri(url_version, True)
         write_content_to_file(dir_version, content, False)
@@ -63,8 +63,8 @@ if __name__ == "__main__":
         file_list = parse_version(dir_version)
 
         for file in file_list:
-            url_file = base_url + "swf/" + file
-            dir_file = base_dir + "swf/" + file
+            url_file = BASE_URL + "swf/" + file
+            dir_file = BASE_DIR + "swf/" + file
 
             print(f"[{countLang}/{len(lang_list)}][{countFile}/{len(file_list)}] Getting file {file} [{url_file}]")
             content = get_content_from_uri(url_file, False)
