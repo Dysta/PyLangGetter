@@ -1,3 +1,5 @@
 .vscode/
 
 lang/
+
+.mypy_cache

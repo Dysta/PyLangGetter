@@ -11,30 +11,28 @@ def get_content_from_uri(uri, decode):
     with urireq.urlopen(uri) as file:
         if decode:
             return file.read().decode("utf-8")
-        else:
-            return file.read()
+        return file.read()
 
 def parse_version(version_file):
     with open(version_file, "r") as file:
         content = file.read()
-    file_list = content.replace("&f=", "").replace(",", "_").split("|")
-    del file_list[-1]
+    file_list = content.replace("&f=", "").replace(",", "_").split("|")[:-1]
     return [f"{name}.swf" for name in file_list]
 
 def parse_args(args):
-    default_lang = {"fr", "de", "en", "it", "es", "pt", "nl"}
-    if len(args) > 1 :
-        del args[0]
-        for arg in args:
-            if arg not in default_lang:
-                print("Unknow lang {}, available lang : {}".format(arg, default_lang))
-                exit(0)
-        return args
-    else:
+    args = args[1:]
+    default_lang = ["fr", "de", "en", "it", "es", "pt", "nl"]
+    if len(args) < 1:
         return default_lang
+        
+    for arg in args:
+        if arg not in default_lang:
+            print(f"Unknow lang {arg}, available lang : {default_lang}")
+            exit(0)
+    return args
 
-BASE_URL    = "http://dofusretro.cdn.ankama.com/lang/"
-BASE_DIR    = "lang/"
+BASE_URL = "http://dofusretro.cdn.ankama.com/lang/"
+BASE_DIR = "lang/"
 
 if __name__ == "__main__":
     lang_list = parse_args(sys.argv)
@@ -49,8 +47,8 @@ if __name__ == "__main__":
     content = get_content_from_uri(versions_uri, False)
     write_content_to_file(versions_dir, content, True)
     
-    countLang:int = 1
-    countFile:int = 1
+    countLang = 1
+    countFile = 1
     
     for lang in lang_list:
         version_name = "versions_" + lang + ".txt"
@@ -66,7 +64,7 @@ if __name__ == "__main__":
             url_file = BASE_URL + "swf/" + file
             dir_file = BASE_DIR + "swf/" + file
 
-            print(f"[{countLang}/{len(lang_list)}][{countFile}/{len(file_list)}] Getting file {file} [{url_file}]")
+            print(f"[{countLang}/{len(lang_list)}][{countFile}/{len(file_list)}] \t Get lang {file}")
             content = get_content_from_uri(url_file, False)
             write_content_to_file(dir_file, content, True)
             countFile+=1
