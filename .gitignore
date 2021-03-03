@@ -3,3 +3,5 @@
 lang/
 
 .mypy_cache
+
+__pycache__/
