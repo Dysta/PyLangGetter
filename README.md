@@ -1,14 +1,11 @@
 # PyLangGetter
-Python Lang files getter for Dofus Retro.
+Tiny utility to help you download Dofus Retro Lang files.
 
-## Requirement 
-Python version >= 3.8 \
-urllib3 \
-os \
-sys
+# Installation
+`pip install pylanggetter`
 
 ## Usage
-`python PyLangGetter.py` to get all lang files in all language \
-`python PyLangGetter.py fr` to get lang files in **fr** language \
-`python PylangGetter.py it de` to get lang files in **it** and **de** langage \
+`python -m pylanggetter` to get all lang files in all language \
+`python -m pylanggetter fr` to get lang files in **fr** language \
+`python -m pylanggetter it de` to get lang files in **it** and **de** langage \
 Available language option : `fr, de, en, it, es, pt, nl`
