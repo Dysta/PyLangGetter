@@ -7,3 +7,5 @@ lang/
 __pycache__/
 
 dist/
+
+poetry.lock
