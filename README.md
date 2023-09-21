@@ -5,7 +5,18 @@ Tiny utility to help you download Dofus Retro Lang files.
 `pip install pylanggetter`
 
 ## Usage
-`python -m pylanggetter` to get all lang files in all language \
-`python -m pylanggetter fr` to get lang files in **fr** language \
-`python -m pylanggetter it de` to get lang files in **it** and **de** langage \
-Available language option : `fr, de, en, it, es, pt, nl`
+`python -m pylanggetter` to get all lang files in **all language** and **all build** \
+`python -m pylanggetter fr` to get lang files in **fr** language and **all build** \
+`python -m pylanggetter it de` to get lang files in **it** and **de** langage and **all build** \
+`python -m pylanggetter --prod` to get all lang files in **all language** and only **prod** build \
+`python -m pylanggetter fr --temporis` to get lang files in **fr** language and **temporis** build \
+`python -m pylanggetter it de --betaenv` to get lang files in **it** and **de** langage and **betaenv** build \
+
+Available language option : `fr, de, en, it, es, pt, nl` \
+Available build option : `--prod, --betaenv, --temporis, --ephemeris2releasebucket`
+
+#### Build description:
+- **prod**: official lang used on regular servers
+- **betaenv**: beta lang used on beta servers
+- **temporis**: temporis lang used on temporis servers
+- **ephemeris2releasebucket**: special temporis lang used on temporis servers
