@@ -11,6 +11,7 @@ Tiny utility to help you download Dofus Retro Lang files.
 `python -m pylanggetter --prod` to get all lang files in **all language** and only **prod** build \
 `python -m pylanggetter fr --temporis` to get lang files in **fr** language and **temporis** build \
 `python -m pylanggetter it de --betaenv` to get lang files in **it** and **de** langage and **betaenv** build \
+`python -m pylanggetter es pt --prod --temporis` to get lang files in **es** and **pt** langage and **prod** and **temporis** build
 
 Available language option : `fr, de, en, it, es, pt, nl` \
 Available build option : `--prod, --betaenv, --temporis, --ephemeris2releasebucket`

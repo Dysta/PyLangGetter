@@ -39,7 +39,7 @@ def start():
                 dir_file = _BASE_DIR % build + "swf/" + file
 
                 logger.info(
-                    f"[{count_build}/{len(builds)}][{count_lang}/{len(lang_list)}][{count_file}/{len(file_list)}] \t === {file} - {build[1:] or 'default'}"
+                    f"[{count_build}/{len(builds)}][{count_lang}/{len(lang_list)}][{count_file:02d}/{len(file_list)}] \t === {file} - {build[1:] or 'default'}"
                 )
                 content = Utils.get_content_from_uri(url_file, False)
                 Utils.write_content_to_file(dir_file, content, True)

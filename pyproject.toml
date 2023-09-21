@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PylangGetter"
-version = "0.3.0"
+version = "0.3.1"
 description = "Tiny utility to help you download Dofus Retro Lang files"
 authors = ["Dysta"]
 keywords = ["dofus retro", "dofus", "retro", "bot", "emulateur"]

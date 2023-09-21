@@ -101,15 +101,12 @@ class Utils:
         if len(args) < 1:
             return list(Utils.DEFAULT_BUILD.values())
 
-        if len(args) > 1:
-            raise ValueError(
-                f"Too many build args, available build : {list(Utils.DEFAULT_BUILD.keys())}"
-            )
-
+        res: list = []
         for arg in args:
             if arg not in Utils.DEFAULT_BUILD:
                 raise ValueError(
                     f"Unknow build {arg}, available build : {list(Utils.DEFAULT_BUILD.keys())}"
                 )
+            res.append(Utils.DEFAULT_BUILD[arg])
 
-        return [Utils.DEFAULT_BUILD[arg]]
+        return res
