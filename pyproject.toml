@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PylangGetter"
-version = "0.2.8"
+version = "0.3.0"
 description = "Tiny utility to help you download Dofus Retro Lang files"
 authors = ["Dysta"]
 keywords = ["dofus retro", "dofus", "retro", "bot", "emulateur"]
@@ -16,6 +16,9 @@ loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.8.0"
+
+[tool.black]
+line-length = 120
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
