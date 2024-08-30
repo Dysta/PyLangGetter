@@ -14,10 +14,11 @@ Tiny utility to help you download Dofus Retro Lang files.
 `python -m pylanggetter es pt --prod --temporis` to get lang files in **es** and **pt** langage and **prod** and **temporis** build
 
 Available language option : `fr, de, en, it, es, pt, nl` \
-Available build option : `--prod, --betaenv, --temporis, --ephemeris2releasebucket`
+Available build option : `--prod, --betaenv, --temporis, --ephemeris2releasebucket, --t3mporis-release`
 
 #### Build description:
 - **prod**: official lang used on regular servers
 - **betaenv**: beta lang used on beta servers
 - **temporis**: temporis lang used on temporis servers
 - **ephemeris2releasebucket**: special temporis lang used on temporis servers
+- **t3mporis-release**: temporis lang used on temporis 3 servers

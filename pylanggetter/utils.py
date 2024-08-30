@@ -11,6 +11,7 @@ class Utils:
         "betaenv": "/betaenv",
         "temporis": "/temporis",
         "ephemeris2releasebucket": "/ephemeris2releasebucket",
+        "t3mporis-release": "/t3mporis-release",
     }
 
     @staticmethod
@@ -104,9 +105,7 @@ class Utils:
         res: list = []
         for arg in args:
             if arg not in Utils.DEFAULT_BUILD:
-                raise ValueError(
-                    f"Unknow build {arg}, available build : {list(Utils.DEFAULT_BUILD.keys())}"
-                )
+                raise ValueError(f"Unknow build {arg}, available build : {list(Utils.DEFAULT_BUILD.keys())}")
             res.append(Utils.DEFAULT_BUILD[arg])
 
         return res
