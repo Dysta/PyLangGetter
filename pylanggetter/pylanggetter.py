@@ -13,24 +13,29 @@ def start():
     lang_list = Utils.parse_args_langs(sys.argv)
     builds = Utils.parse_args_build(sys.argv)
 
-    logger.info(f"Getting lang from this : {lang_list}")
-    logger.info(f"Getting build from this : {builds}")
+    logger.debug(f"Getting lang from this : {lang_list}")
+    logger.debug(f"Getting build from this : {builds}")
 
     for count_build, build in enumerate(builds, start=1):
         os.makedirs(_BASE_DIR % build + "swf/", exist_ok=True)
         versions_uri = _BASE_URL % build + "versions.swf"
         versions_dir = _BASE_DIR % build + "versions.swf"
 
-        content = Utils.get_content_from_uri(versions_uri, False)
-        Utils.write_content_to_file(versions_dir, content, True)
+        try:
+            content = Utils.get_content_from_uri(versions_uri, decode=False)
+            Utils.write_content_to_file(versions_dir, content, is_byte=True)
+        except Exception as e:
+            logger.error(f"Error while getting versions file for build {build} at {versions_uri}: {e}")
+            os.removedirs(_BASE_DIR % build + "swf/")
+            continue
 
         for count_lang, lang in enumerate(lang_list, start=1):
             version_name = "versions_" + lang + ".txt"
             url_version = _BASE_URL % build + version_name
             dir_version = _BASE_DIR % build + version_name
 
-            content = Utils.get_content_from_uri(url_version, True)
-            Utils.write_content_to_file(dir_version, content, False)
+            content = Utils.get_content_from_uri(url_version, decode=True)
+            Utils.write_content_to_file(dir_version, content, is_byte=False)
 
             file_list = Utils.parse_version(dir_version)
 
@@ -39,9 +44,9 @@ def start():
                 dir_file = _BASE_DIR % build + "swf/" + file
 
                 logger.info(
-                    f"[{count_build}/{len(builds)}][{count_lang}/{len(lang_list)}][{count_file:02d}/{len(file_list)}] \t === {file} - {build[1:] or 'default'}"
+                    f"[{count_build}/{len(builds)}][{count_lang}/{len(lang_list)}][{count_file:02d}/{len(file_list)}] \t === {file} - {build[1:] or 'prod'}"
                 )
-                content = Utils.get_content_from_uri(url_file, False)
-                Utils.write_content_to_file(dir_file, content, True)
+                content = Utils.get_content_from_uri(url_file, decode=False)
+                Utils.write_content_to_file(dir_file, content, is_byte=True)
 
     logger.success("Done. All files are in the data folder.")
