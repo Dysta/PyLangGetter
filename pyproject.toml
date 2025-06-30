@@ -14,7 +14,7 @@ pylanggetter = "pylanggetter.pylanggetter:start"
 python = ">=3.8"
 loguru = "^0.6.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = "^22.8.0"
 
 [tool.black]
