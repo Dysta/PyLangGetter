@@ -17,7 +17,7 @@ Tiny utility to help you download Dofus Retro Lang files.
 Available language option : `fr, de, en, it, es, pt, nl` \
 Available build option : `--prod, --betaenv, --temporis, --ephemeris2releasebucket, --t3mporis-release`
 
-The tool now support any build option, it mean that if you put `--whatever`, the tool will try to download the `cdn.retro/whatever` langs file and raise an 403 error since the build doesn't exist.
+The tool now support any build option, it mean that if you put `--whatever`, the tool will try to download the `cdn.retro/whatever` langs file and raise an 403 error if the build doesn't exist.
 
 #### Build description:
 - **prod**: official lang used on regular servers
