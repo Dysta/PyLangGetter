@@ -19,6 +19,10 @@ Available build option : `--prod, --betaenv, --temporis, --ephemeris2releasebuck
 
 The tool now support any build option, it mean that if you put `--whatever`, the tool will try to download the `cdn.retro/whatever` langs file and raise an 403 error if the build doesn't exist.
 
+## Usage (uv)
+You can use `pylanggetter` with [uv](https://docs.astral.sh/uv/) by simply calling \
+`uvx pylanggetter ...` and passing the same arguments as the previous section.
+
 #### Build description:
 - **prod**: official lang used on regular servers
 - **betaenv**: beta lang used on beta servers
